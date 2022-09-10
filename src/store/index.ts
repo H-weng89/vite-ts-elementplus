@@ -1,47 +1,20 @@
 import {createStore} from 'vuex'
 import {App} from 'vue'
 import {userInfo} from '@/api'
-import {UPDATEMENUS} from './type'
+import state from './state'
+import getters from './getters'
+import mutations from './mutation'
+import actions  from './actions'
+
 import { InputNumberEmits } from 'element-plus'
-interface menuObj{
-    parentId:number,
-    id:number,
-    children?:menuObj[],
-    name:string
-}
-interface state{
-    menus:menuObj[]
+interface state {
+
 }
 const store = createStore<state>({
-    state(){
-        return{
-            menus:[]
-        }
-    },
-    getters:{
-        getNewMenus(state){
-            const menus = state.menus
-            const newMenus =  menus.map((item)=>{
-                if(item.parentId==0){
-                   return  {...item,
-                    children:menus.filter(e=>e.parentId==item.id)}
-                }
-            })
-            return newMenus.filter(item=>item)
-        }
-    },
-    mutations:{
-        [UPDATEMENUS](state,payload){
-            state.menus = payload
-        }
-    },
-    actions:{
-        async [UPDATEMENUS]({commit}){
-          
-            const info = await userInfo()
-            commit(UPDATEMENUS,info.data.menus)
-        }
-    },
+    state,
+   getters,
+   mutations,
+   actions,
     modules:{}
 
 })

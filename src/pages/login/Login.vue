@@ -29,17 +29,20 @@
   </div>
 </template>
 <script lang="ts" setup>
+  
 import { reactive, ref,onMounted } from 'vue'
 import type { FormInstance } from 'element-plus'
 import {useRouter} from 'vue-router'
 import { login,userInfo}from '@/api'
 import {useStore} from 'vuex'
- 
-const ruleFormRef = ref<FormInstance>()
+
+const ruleFormRef = ref<FormInstance>() 
 const router = useRouter()
 const store = useStore()
 
-
+onMounted(()=>{
+ 
+})
 
 const validateuserName = (rule: any, value: any, callback: any) => {
   if (value === '') {

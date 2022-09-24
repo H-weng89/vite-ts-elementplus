@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
-
+import router from './router/index'
 import './style.css'
 import App from './App.vue'
 import '@/assets/nomalize.css'
 const app = createApp(App)
-import {initRouter} from '@/router'
 import {initStore} from '@/store'
-initRouter(app)
+
 initStore(app)
+app.use(router)
 app.mount('#app')

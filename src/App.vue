@@ -1,8 +1,8 @@
 <template>
-<RouterView></RouterView>
+<router-view></router-view>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive, toRefs, onBeforeMount, onMounted } from 'vue'
 
 export default {
